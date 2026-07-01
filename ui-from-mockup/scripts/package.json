@@ -1,0 +1,17 @@
+{
+  "name": "ui-from-mockup-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Small Playwright helpers for the ui-from-mockup skill.",
+  "bin": {
+    "ui-shot": "./shot.mjs",
+    "ui-diff": "./diff.mjs",
+    "ui-layout": "./layout.mjs",
+    "ui-diag": "./diag.mjs"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0",
+    "playwright": "^1.49.0"
+  }
+}

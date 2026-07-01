@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI From Mockup"
+  short_description: "Visual UI loop with screenshot and layout diffs"
+  default_prompt: "Use $ui-from-mockup to recreate this UI from a mockup or screenshot with screenshots, layout snapshots, and visual diffs."
