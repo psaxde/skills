@@ -7,6 +7,7 @@ temporary work files, and `node_modules` out of Git.
 
 ## Skills
 
+- `marketing-performance-check` - combine GA4, GSC, advertising, commerce, SEO tools, and first-party data into a fresh, source-aware performance diagnosis.
 - `pinterest-content-ops` - create, preview, validate, schedule, publish, and verify reusable Pinterest pin batches from source-backed products, articles, recipes, or campaigns.
 - `ui-from-mockup` - recreate or refine UI from mockups/screenshots with screenshot capture, layout snapshots, visual diffs, region crops, and global-shift diagnostics.
 
@@ -58,5 +59,11 @@ my-skill/
 Validate before committing when possible:
 
 ```bash
-python "$HOME/.codex/skills/.system/skill-creator/scripts/quick_validate.py" ./my-skill
+python3 "$HOME/.codex/skills/.system/skill-creator/scripts/quick_validate.py" ./my-skill
 ```
+
+## Public repository safety
+
+Keep credentials, tokens, property and account IDs, private profiles, customer data,
+and internal endpoints outside this repository. Commit only sanitized examples that
+refer to environment-variable names or local secret stores.

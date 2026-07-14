@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-01-31T09:00:00+00:00",
+  "timezone": "Europe/Berlin",
+  "periods": {
+    "current": {
+      "start": "2026-01-01",
+      "end": "2026-01-28"
+    },
+    "previous": {
+      "start": "2025-12-04",
+      "end": "2025-12-31"
+    },
+    "year_over_year": {
+      "start": "2025-01-01",
+      "end": "2025-01-28"
+    }
+  },
+  "sources": [
+    {
+      "name": "ga4",
+      "as_of": "2026-01-30",
+      "status": "ok",
+      "metrics": [
+        {
+          "name": "organic_sessions",
+          "current": 1200,
+          "previous": 1000,
+          "year_over_year": 900,
+          "unit": "count",
+          "higher_is_better": true
+        },
+        {
+          "name": "conversion_rate",
+          "current": 2.4,
+          "previous": 2.6,
+          "year_over_year": 2.1,
+          "unit": "percent",
+          "higher_is_better": true
+        }
+      ]
+    },
+    {
+      "name": "commerce",
+      "as_of": "2026-01-30",
+      "status": "ok",
+      "metrics": [
+        {
+          "name": "orders",
+          "current": 42,
+          "previous": 36,
+          "year_over_year": 31,
+          "unit": "count",
+          "higher_is_better": true
+        }
+      ]
+    }
+  ]
+}
