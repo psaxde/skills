@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Performance Check"
+  short_description: "Cross-source marketing performance checks"
+  default_prompt: "Use $marketing-performance-check to run a current cross-source marketing performance check and explain the most important changes."
