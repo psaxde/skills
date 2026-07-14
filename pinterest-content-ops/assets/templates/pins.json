@@ -1,0 +1,15 @@
+[
+  {
+    "id": "01",
+    "date": "2030-08-03",
+    "time": "19:00",
+    "board": "Existing Relevant Board",
+    "title": "Main keyword first: concise Pinterest title",
+    "description": "Natural, source-backed description with a clear benefit and destination context. Keep the wording useful and specific instead of stuffing keywords.",
+    "alt": "Accurate description of the visible source product or article image.",
+    "link": "https://example.com/specific-page?utm_source=pinterest&utm_medium=social&utm_campaign=example&utm_content=pin01",
+    "creative_file": "pins/01.jpg",
+    "status": "draft",
+    "ai_modified": false
+  }
+]

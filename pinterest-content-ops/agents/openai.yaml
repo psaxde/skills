@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pinterest Content Ops"
+  short_description: "Pinterest pin batches with safe preview gates"
+  default_prompt: "Use $pinterest-content-ops to create a complete Pinterest batch from these sources, including a contact-sheet preview and proposed schedule."
