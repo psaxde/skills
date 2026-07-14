@@ -1,0 +1,22 @@
+{
+  "profile_version": 1,
+  "brand": "Example Brand",
+  "pinterest_account_hint": "verify_live",
+  "language": "en",
+  "market": "US",
+  "source_domains": ["example.com"],
+  "preferred_destination": "most_specific_source_page",
+  "utm_required": false,
+  "hashtags": false,
+  "allow_generated_backgrounds": true,
+  "preserve_source_subjects": true,
+  "palette": {
+    "accent": "#8F2635",
+    "ink": "#26352E",
+    "light": "#F6F0E7",
+    "secondary": "#6C806F"
+  },
+  "tone": ["clear", "helpful", "brand-appropriate"],
+  "cta_default": "Discover more",
+  "output_root_hint": "pinterest/batches"
+}

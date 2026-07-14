@@ -1,0 +1,25 @@
+{
+  "brand": {
+    "name": "Example Brand",
+    "mark": "E",
+    "accent": "#8F2635",
+    "ink": "#26352E",
+    "cta": "Discover more"
+  },
+  "pins": [
+    {
+      "id": "01",
+      "background": "assets/backgrounds/scene.png",
+      "product": "assets/source/product.jpg",
+      "badge": "Category",
+      "headline": "A short, readable headline.",
+      "subline": "One source-backed benefit or context line",
+      "label": "Short label",
+      "meta_strong": "Primary benefit",
+      "meta_text": "supporting context",
+      "proof": "Authentic, verified attributes",
+      "headline_size": 68,
+      "dark": false
+    }
+  ]
+}

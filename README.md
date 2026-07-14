@@ -7,6 +7,7 @@ temporary work files, and `node_modules` out of Git.
 
 ## Skills
 
+- `pinterest-content-ops` - create, preview, validate, schedule, publish, and verify reusable Pinterest pin batches from source-backed products, articles, recipes, or campaigns.
 - `ui-from-mockup` - recreate or refine UI from mockups/screenshots with screenshot capture, layout snapshots, visual diffs, region crops, and global-shift diagnostics.
 
 ## Install locally
@@ -17,21 +18,23 @@ Clone the repository:
 git clone git@github.com:psaxde/skills.git ~/skills
 ```
 
-Install a skill for Codex by symlinking it into `~/.codex/skills`:
+Install a skill for Codex by symlinking it into `~/.codex/skills` (replace
+`<skill-name>` with a directory listed above):
 
 ```bash
 mkdir -p ~/.codex/skills
-ln -sfn ~/skills/ui-from-mockup ~/.codex/skills/ui-from-mockup
+ln -sfn ~/skills/<skill-name> ~/.codex/skills/<skill-name>
 ```
 
 For Claude Code, either point Claude at the same skill or symlink it separately:
 
 ```bash
 mkdir -p ~/.claude/skills
-ln -sfn ~/skills/ui-from-mockup ~/.claude/skills/ui-from-mockup
+ln -sfn ~/skills/<skill-name> ~/.claude/skills/<skill-name>
 ```
 
-If a skill has Node-based helper scripts, install its local script dependencies:
+If a skill has Node-based helper scripts, follow that skill's setup notes. For
+example:
 
 ```bash
 cd ~/skills/ui-from-mockup/scripts
