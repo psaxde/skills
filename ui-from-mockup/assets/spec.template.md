@@ -8,6 +8,15 @@
 - Target implementation files:
 - Preview route or harness:
 - Viewports:
+- Change classes: visual / client behavior / external contract
+- Shared shell or reusable components:
+- Visual acceptance rule and intentional platform differences:
+
+## Capture Profiles
+
+| Target | Logical size | DPR / output pixels | Insets / system chrome | Locale / text scale |
+|---|---|---|---|---|
+|  |  |  |  |  |
 
 ## Block Inventory
 
