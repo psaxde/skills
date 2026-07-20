@@ -7,6 +7,7 @@ function parseArgs(argv) {
   const args = {
     vw: 1280,
     vh: 900,
+    dpr: 1,
     full: false,
     freeze: false,
     frames: 1,
@@ -33,6 +34,9 @@ function parseArgs(argv) {
         break;
       case "--vh":
         args.vh = Number(next());
+        break;
+      case "--dpr":
+        args.dpr = Number(next());
         break;
       case "--full":
         args.full = true;
@@ -78,6 +82,11 @@ function parseArgs(argv) {
 
   if (!args.url || !args.out) {
     console.error("Required: --url <url> --out <file.png>");
+    process.exit(2);
+  }
+
+  if (!Number.isFinite(args.dpr) || args.dpr <= 0) {
+    console.error("--dpr must be a positive number");
     process.exit(2);
   }
 
@@ -167,6 +176,7 @@ async function main() {
   const browser = await chromium.launch({ headless: !args.headed });
   const context = await browser.newContext({
     viewport: { width: args.vw, height: args.vh },
+    deviceScaleFactor: args.dpr,
     reducedMotion: args.freeze ? "reduce" : "no-preference",
   });
   const page = await context.newPage();
@@ -196,7 +206,7 @@ async function main() {
         if (i < args.frames - 1) await page.waitForTimeout(args.interval);
       }
       console.log(
-        `OK ${args.frames} frames @${args.interval}ms (${args.vw}x${args.vh}): ${written[0]} ... ${written[written.length - 1]}`,
+        `OK ${args.frames} frames @${args.interval}ms (${args.vw}x${args.vh}@${args.dpr}x): ${written[0]} ... ${written[written.length - 1]}`,
       );
       return;
     }
@@ -204,7 +214,7 @@ async function main() {
     const outPath = resolve(args.out);
     await capture(page, args, outPath);
     console.log(
-      `OK ${outPath} (${args.vw}x${args.vh}${args.full ? " fullPage" : ""}${args.freeze ? " frozen" : ""}${args.selector ? ` selector=${args.selector}` : ""})`,
+      `OK ${outPath} (${args.vw}x${args.vh}@${args.dpr}x${args.full ? " fullPage" : ""}${args.freeze ? " frozen" : ""}${args.selector ? ` selector=${args.selector}` : ""})`,
     );
   } finally {
     await browser.close();

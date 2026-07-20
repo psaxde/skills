@@ -1,6 +1,6 @@
 ---
 name: ui-from-mockup
-description: Build or refine frontend UI from a mockup, screenshot, design export, HTML mock, Figma screenshot, or visual reference by using a closed render screenshot compare loop plus optional DOM layout snapshots, PNG diff heatmaps, region crops, and global-shift diagnostics. Use when Codex is asked to recreate UI accurately, make an implementation match a mockup, compare two screenshots, explain visual differences, generate a visual diff, port a design across web/mobile targets, reduce visual QA rounds, create a dev-only preview route, extract a UI spec before coding, or verify layout/animation fidelity with screenshots.
+description: Build or refine frontend UI from a mockup, screenshot, design export, HTML mock, Figma screenshot, or visual reference by using a closed render screenshot compare loop plus optional DOM layout snapshots, PNG diff heatmaps, region crops, and global-shift diagnostics. Use when Codex is asked to recreate UI accurately, make an implementation match a mockup, compare two screenshots, explain visual differences, generate a visual diff, port a design across web, Flutter, or native mobile targets, convert an HTML design into Flutter widgets, reduce visual QA rounds, create a dev-only preview route or widget harness, extract a UI spec before coding, or verify layout/animation fidelity with screenshots or golden tests.
 ---
 
 # UI From Mockup
@@ -16,6 +16,7 @@ that spec, take screenshots, read the PNGs, fix, and repeat until only cosmetic 
 - For machine-readable DOM/layout snapshots, use `scripts/layout.mjs`.
 - For debugging unreachable pages, use `scripts/diag.mjs`.
 - For project-specific preview-route patterns, read `references/preview-adapters.md`.
+- For Flutter implementation, safe areas, widget harnesses, simulator capture, and golden testing, read `references/flutter.md`.
 - For the extracted implementation spec, copy `assets/spec.template.md` into the project, usually under `docs/plans/<feature>/spec.md`.
 
 ## Core Rules
@@ -30,12 +31,13 @@ that spec, take screenshots, read the PNGs, fix, and repeat until only cosmetic 
 8. Treat pixel diff as evidence, not judgment. Heatmaps show where pixels differ; the agent must still inspect screenshots to decide whether the difference is missing content, wrong state, font/rendering drift, antialiasing, or acceptable polish.
 9. Match capture conditions before trusting diffs. Use the same viewport, crop/selector, seeded state, wait condition, scroll position, browser, font environment, and freeze setting for target and actual captures.
 10. Prefer explainable artifacts over red overlays. Read the compare sheet, region crops, layout JSON, and shift report before deciding what to change.
+11. Classify each discrepancy as visual, client behavior, or external contract work. A mockup can imply new behavior, but UI code alone does not implement a missing API, persistence rule, permission, or platform capability.
 
 ## Workflow
 
 ### Gate 0: Reachability
 
-Pick the lightest route that lets a headless browser render the target state:
+Pick the lightest route or harness that renders the target state reproducibly:
 
 - Public/static screen: screenshot the real URL or `file://` mockup directly.
 - Stateful app screen: seed URL params, localStorage/sessionStorage, cookies, or fixtures.
@@ -53,6 +55,8 @@ Create `docs/plans/<feature>/spec.md` from `assets/spec.template.md`. Fill it wi
 - states: default, hover, focus, error, empty, loading, disabled
 - animation numbers: property from/to, duration, easing, delay/stagger, loop
 - token mapping: mockup value -> app token, with named-token TODOs for new values
+- platform geometry: logical size, output pixels/DPR, safe-area insets, system chrome, locale, and text scale
+- change classification: visual, client behavior, or external contract
 - source/render disagreements and scope decisions
 
 This spec is the shared input for implementation and any subagent. The raw mockup remains evidence, not the operating manual.
@@ -66,6 +70,7 @@ Before coding net-new or ambiguous items, state the intended interpretation in o
 
 Implement from the spec using the project's existing UI components, tokens, routing, and test style.
 For multi-target work, use the same spec for every target and document intentional platform differences.
+For Flutter targets, read `references/flutter.md` before choosing the widget structure or capture harness.
 
 ### Gate 4: Checklist Diff
 
@@ -130,7 +135,9 @@ Prefer reading `--compare-out`, region crops, and layout JSON over reading the h
 
 The diff summary includes `shift.actualOffset` and `shift.suggestedCorrection`. Example: `actualOffset.y = 8` means the actual screenshot appears roughly 8px lower than the target; the suggested correction is about `-8px`. Treat this as a coarse diagnostic, then confirm with the screenshots and layout boxes.
 
-For mobile, capture a real target viewport such as `--vw 390 --vh 844`. For full pages, add `--full`.
+For mobile, capture a real logical viewport such as `--vw 390 --vh 844`. If the actual screenshot
+comes from a native device or simulator, add `--dpr` so the target PNG has matching physical
+dimensions. For full web pages, add `--full`. Read `references/flutter.md` for the native loop.
 
 For animation:
 
