@@ -48,12 +48,16 @@ CSV aliases accepted by the validator include `pin_id`, `schedule_date`, `schedu
     "mark": "E",
     "accent": "#8F2635",
     "ink": "#26352E",
+    "light": "#FFF9F0",
+    "secondary": "#E9DFF7",
+    "highlight": "#E2A660",
+    "domain": "EXAMPLE.COM",
     "cta": "Discover more"
   },
   "pins": [
     {
       "id": "01",
-      "background": "assets/backgrounds/scene.png",
+      "template": "editorial",
       "product": "assets/source/product.jpg",
       "badge": "Category",
       "headline": "A short, readable headline.",
@@ -63,13 +67,29 @@ CSV aliases accepted by the validator include `pin_id`, `schedule_date`, `schedu
       "meta_text": "supporting context",
       "proof": "Authentic, verified attributes",
       "headline_size": 68,
-      "dark": false
+      "image_focus_x": 0.5,
+      "image_focus_y": 0.5
     }
   ]
 }
 ```
 
-Paths resolve relative to `visuals.json`. Per-pin `accent` and `ink` override the profile defaults.
+Paths resolve relative to `visuals.json`. Per-pin palette values override the profile defaults.
+
+### Visual fields
+
+| Field | Rule |
+|---|---|
+| `template` | required for new batches: `editorial`, `bold_photo`, or `recipe_card`; `classic` is legacy-only |
+| `product` | authentic source image path |
+| `background` | optional for `editorial`; required only by `classic` |
+| `badge`, `headline`, `subline`, `label`, `meta_strong`, `meta_text`, `proof` | short source-backed visible strings |
+| `stat_value`, `stat_label` | optional compact stat for `recipe_card`; falls back to `meta_text` and `label` |
+| `card_kicker` | optional localized recipe-card eyebrow; defaults to `DETAILS` |
+| `image_focus_x`, `image_focus_y` | optional crop focus from `0.0` to `1.0`; defaults to center |
+| `headline_size` | optional preferred size; renderer fits downward to the template minimum |
+
+The renderer prints structured JSON with output paths and per-template counts. Missing required fields, invalid colors, unsupported templates, text overflow, and unreadable images must fail rendering.
 
 ## State and approval
 

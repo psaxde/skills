@@ -27,6 +27,18 @@ Expected behavior:
 5. stop with statuses at `ready_for_preview`
 6. perform no Pinterest writes until explicit approval arrives
 
+## Positive design iteration: three-family batch
+
+Human-approved direction:
+
+1. render the same authentic source image as `editorial`, `bold_photo`, and `recipe_card`
+2. use `editorial` as the calm default, `bold_photo` for strong full-bleed photography, and `recipe_card` for verified compact facts
+3. keep at least 28 px horizontal component padding
+4. label template families on the contact sheet
+5. inspect all three full-size outputs before promoting the system
+
+For an eight-pin batch, begin with a `3 / 3 / 2` mix when every family is suitable and substitute `editorial` when a photo or fact does not fit the intended family.
+
 ## Anti-pattern and correction
 
 Anti-pattern:
@@ -43,6 +55,20 @@ Correction:
 - verify the board
 - fill and schedule the pin
 - verify date and time before the single final action
+
+## Visual anti-pattern and correction
+
+Anti-pattern:
+
+- draw a right-aligned metadata label in a fixed-width card
+- inset its text from the left but not from the right
+- accept the contact sheet without opening the full-size pin
+
+Correction:
+
+- inset the text rectangle by at least 28 px on both horizontal sides
+- use the renderer's shared pill/card inset helper
+- inspect one full-size pin from every template used in the batch
 
 ## Should trigger
 

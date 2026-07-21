@@ -48,19 +48,21 @@ Treat “show me a preview first”, “prepare only”, or equivalent as a hard
    - Prefer topical and visual variety over near-identical variants.
    - Map each pin to an existing relevant board. Propose a new board only for a genuine coverage gap.
    - Use multiple pins per destination only when headline, crop, intent, or layout differs materially.
+   - Assign every new creative one of `editorial`, `bold_photo`, or `recipe_card`; keep `classic` only for reproducible legacy batches.
+   - For an eight-pin batch where every family is suitable, start with `3 editorial / 3 bold_photo / 2 recipe_card` and adapt from there.
    - Choose dates after the last scheduled item unless the user requested a campaign window.
 
 4. **Build the offline batch**
    - Create the folder contract from `references/batch-contract.md`.
    - Write `pins.json` or `pins.csv` before scheduling.
-   - Create `visuals.json`, generate decorative backgrounds when useful, and render 1000 x 1500 px JPGs.
+   - Create `visuals.json` with an explicit per-pin `template`, generate decorative backgrounds when useful, and render 1000 x 1500 px JPGs.
    - Keep source products, food, people, and article imagery unchanged. Generative elements may frame or support them, not replace them.
    - Generate `contact-sheet.jpg` and a concise `BATCH.md`.
 
 5. **Validate and review**
    - Run `scripts/validate_batch.py --manifest <pins.json-or-csv> --images-root <batch-dir>`.
    - Fix every error and re-run until `ok: true`.
-   - Inspect the contact sheet and representative full-size pins for clipping, contrast, mobile readability, image integrity, and duplicate layouts.
+   - Inspect the contact sheet and one full-size pin from every used template for clipping, contrast, mobile readability, image integrity, balanced component padding, and duplicate layouts.
    - Verify every destination URL once before live scheduling.
 
 6. **Apply the approval gate**

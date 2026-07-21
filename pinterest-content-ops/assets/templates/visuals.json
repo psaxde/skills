@@ -2,24 +2,62 @@
   "brand": {
     "name": "Example Brand",
     "mark": "E",
-    "accent": "#8F2635",
-    "ink": "#26352E",
+    "accent": "#7253A6",
+    "ink": "#312942",
+    "light": "#FFF9F0",
+    "secondary": "#E9DFF7",
+    "highlight": "#E2A660",
+    "domain": "EXAMPLE.COM",
     "cta": "Discover more"
   },
   "pins": [
     {
-      "id": "01",
-      "background": "assets/backgrounds/scene.png",
+      "id": "01-editorial",
+      "template": "editorial",
       "product": "assets/source/product.jpg",
       "badge": "Category",
-      "headline": "A short, readable headline.",
+      "headline": "A short, clear headline",
       "subline": "One source-backed benefit or context line",
       "label": "Short label",
       "meta_strong": "Primary benefit",
-      "meta_text": "supporting context",
+      "meta_text": "Supporting context",
       "proof": "Authentic, verified attributes",
       "headline_size": 68,
-      "dark": false
+      "image_focus_x": 0.5,
+      "image_focus_y": 0.5
+    },
+    {
+      "id": "02-bold-photo",
+      "template": "bold_photo",
+      "product": "assets/source/product.jpg",
+      "badge": "Seasonal angle",
+      "headline": "Short\nheadline",
+      "subline": "with clear context",
+      "label": "Short label",
+      "meta_strong": "Primary benefit",
+      "meta_text": "Supporting context",
+      "proof": "Authentic, verified attributes",
+      "headline_size": 91,
+      "image_focus_x": 0.5,
+      "image_focus_y": 0.5
+    },
+    {
+      "id": "03-recipe-card",
+      "template": "recipe_card",
+      "product": "assets/source/product.jpg",
+      "badge": "Easy to make",
+      "headline": "Clear recipe headline",
+      "subline": "+ Main ingredient",
+      "label": "Makes 12",
+      "meta_strong": "3 ingredients at the center",
+      "meta_text": "30 minutes",
+      "stat_value": "30",
+      "stat_label": "Min",
+      "card_kicker": "Details",
+      "proof": "Ingredient one · Ingredient two · Ingredient three",
+      "headline_size": 67,
+      "image_focus_x": 0.5,
+      "image_focus_y": 0.5
     }
   ]
 }
