@@ -56,7 +56,11 @@ function matches(pattern, value) {
 }
 
 const args = parseArgs(process.argv);
-const browser = await chromium.launch({ headless: !args.headed });
+const browser = await chromium.launch({
+  headless: !args.headed,
+  channel: "chrome",
+  chromiumSandbox: true,
+});
 const page = await browser.newPage({
   viewport: { width: args.vw, height: args.vh },
 });

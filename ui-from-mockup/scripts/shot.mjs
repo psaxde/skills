@@ -173,7 +173,11 @@ async function seedBrowserState(context, page, args) {
 
 async function main() {
   const args = parseArgs(process.argv);
-  const browser = await chromium.launch({ headless: !args.headed });
+  const browser = await chromium.launch({
+    headless: !args.headed,
+    channel: "chrome",
+    chromiumSandbox: true,
+  });
   const context = await browser.newContext({
     viewport: { width: args.vw, height: args.vh },
     deviceScaleFactor: args.dpr,
