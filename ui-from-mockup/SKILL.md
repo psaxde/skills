@@ -83,8 +83,12 @@ Install the helper once in this skill folder when needed:
 ```bash
 cd /Users/ben/.codex/skills/ui-from-mockup/scripts
 npm install
-npx playwright install chromium
 ```
+
+The helper uses the installed Google Chrome binary with `chromiumSandbox: true`.
+Keep Chrome updated. For CI environments without Chrome, provide a compatible
+Chrome binary or run Playwright's bundled browser in an isolated, non-root
+container with the required sandbox profile.
 
 Capture the target and actual UI:
 
